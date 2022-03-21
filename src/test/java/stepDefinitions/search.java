@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Pages.SearchProductPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -14,20 +15,25 @@ import org.testng.Assert;
 import java.util.ArrayList;
 
 public class search {
-
+ SearchProductPage searchProductPage;
 
     @When("user clicks on search field")
     public void user_clicks_on_search_field()
     {
-        // locate search field and click on it
-        Hooks.driver.findElement(By.id("small-searchterms")).click();
+        searchProductPage =new SearchProductPage(Hooks.driver);
+      //  Hooks.driver.findElement(By.id("small-searchterms")).click();
+        searchProductPage.click_search();
     }
 
     @And("user search with name of product")
-    public void user_search_with_name_of_product()
-    {
-        Hooks.driver.findElement(By.id("small-searchterms")).sendKeys("book");
-        Hooks.driver.findElement(By.cssSelector("button[class=\"button-1 search-box-button\"]")).click();
+    public void user_search_with_name_of_product() throws InterruptedException {
+        searchProductPage =new SearchProductPage(Hooks.driver);
+
+        //Hooks.driver.findElement(By.id("small-searchterms")).sendKeys("book");
+        searchProductPage.enter_productname("book");
+        //Hooks.driver.findElement(By.cssSelector("button[class=\"button-1 search-box-button\"]")).click();
+        searchProductPage.clickOnsearch();
+        Thread.sleep(3000);
 
     }
 
