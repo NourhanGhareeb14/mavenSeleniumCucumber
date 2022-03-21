@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Pages.loginPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -10,7 +11,7 @@ import org.testng.Assert;
 
 
 public class loginStepDefintions     {
-
+    loginPage login;
     @Given("user go to login page")
     public void go_to_login_page() throws InterruptedException {
         Hooks.driver.findElement(By.cssSelector("a[href=\"/login?returnUrl=%2F\"]")).click();
@@ -19,21 +20,24 @@ public class loginStepDefintions     {
     @When("^user login with \"([^\"]*)\" \"([^\"]*)\" and \"([^\"]*)\"$")
     public void valid_username_password(String type, String username, String password)
     {
-        Hooks.driver.findElement(By.id("Email")).sendKeys(username);
-        Hooks.driver.findElement(By.id("Password")).sendKeys(password);
+        login=new loginPage(Hooks.driver);
+         login.enter_email(username);
+        login.enter_password(password);
+
     }
 
     @And("user press on login button")
-    public void login_button()
-    {
-        Hooks.driver.findElement(By.id("Password")).sendKeys(Keys.ENTER);
+    public void login_button() throws InterruptedException {
+        login.click_login();
+        Thread.sleep(3000);
+      //  Hooks.driver.findElement(By.id("Password")).sendKeys(Keys.ENTER);
     }
 
     @Then("user login to the system successfully")
     public void success_login()
     {
-        // Please remove below line and do it on your own
-        Assert.assertTrue(true);
+        login.logoutDisplayed();
+         Assert.assertTrue(true);
         Assert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/");
 
 
