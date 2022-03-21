@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Pages.ChangCategoryLocatorPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,16 +8,21 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class ChangeCategory {
+    ChangCategoryLocatorPage changCategoryLocatorPage;
     @Given("user go to category and assert on url")
     public void user_go_to_category() throws InterruptedException {
-        Hooks.driver.findElement(By.xpath("//*[text()='Digital downloads ']")).click();
+        changCategoryLocatorPage=new ChangCategoryLocatorPage(Hooks.driver);
+                changCategoryLocatorPage.click_category();
+      //  Hooks.driver.findElement(By.xpath("//*[text()='Digital downloads ']")).click();
         Assert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/digital-downloads");
         Thread.sleep(2000);
     }
 
     @And("user select another category")
     public void user_select_nother_category() throws InterruptedException {
-        Hooks.driver.findElement(By.xpath("//*[text()='Jewelry ']")).click();
+        changCategoryLocatorPage=new ChangCategoryLocatorPage(Hooks.driver);
+        changCategoryLocatorPage.click_category2();
+       // Hooks.driver.findElement(By.xpath("//*[text()='Jewelry ']")).click();
 
 
     }
