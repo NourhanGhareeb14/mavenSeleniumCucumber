@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import Pages.AddToCartPage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -7,10 +8,13 @@ import org.openqa.selenium.By;
 import org.testng.Assert;
 
 public class AddToCart {
+    AddToCartPage addToCartPage;
     @Given("user go to product and  add it to Cart")
     public void user_go_to_product_and_user_add_it_to_Cart() throws InterruptedException {
+        addToCartPage =new AddToCartPage(Hooks.driver);
         Hooks.driver.navigate().to("https://demo.nopcommerce.com/apple-macbook-pro-13-inch ");
-        Hooks.driver.findElement(By.xpath("//*[text()='Add to cart']")).click();
+      //  Hooks.driver.findElement(By.xpath("//*[text()='Add to cart']")).click();
+        addToCartPage.click_addtocart();
     }
 
     @And("user select cart")
