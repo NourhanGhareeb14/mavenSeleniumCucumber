@@ -8,6 +8,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 
 public class loginStepDefintions     {
@@ -29,7 +30,7 @@ public class loginStepDefintions     {
     @And("user press on login button")
     public void login_button() throws InterruptedException {
         login.click_login();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
       //  Hooks.driver.findElement(By.id("Password")).sendKeys(Keys.ENTER);
     }
 

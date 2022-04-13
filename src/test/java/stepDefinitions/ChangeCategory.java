@@ -6,6 +6,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class ChangeCategory {
     ChangCategoryLocatorPage changCategoryLocatorPage;
@@ -15,7 +16,9 @@ public class ChangeCategory {
                 changCategoryLocatorPage.click_category();
       //  Hooks.driver.findElement(By.xpath("//*[text()='Digital downloads ']")).click();
         Assert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/digital-downloads");
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
+
     }
 
     @And("user select another category")

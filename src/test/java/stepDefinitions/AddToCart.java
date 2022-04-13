@@ -1,11 +1,13 @@
 package stepDefinitions;
 
 import Pages.AddToCartPage;
+import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class AddToCart {
     AddToCartPage addToCartPage;
@@ -20,7 +22,8 @@ public class AddToCart {
     @And("user select cart")
     public void user_select_cart() throws InterruptedException {
        // Hooks.driver.findElement(By.xpath("//*[text()='Add to cart']")).click();
-        Thread.sleep(3000);
+       // Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
         Hooks.driver.navigate().to("https://demo.nopcommerce.com/cart");
 
 
@@ -28,7 +31,9 @@ public class AddToCart {
     @Then("user get products added to Cart")
     public void user_get_products_added_to_cart() throws InterruptedException {
 
-        Thread.sleep(2000);
+       // Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
+
         String expecetedResult ="Apple MacBook Pro 13-inch";
         String actualResult =Hooks.driver.findElement(By.className("product-name")).getText();
         System.out.println(Hooks.driver.findElement(By.className("product-name")).getText());
@@ -36,4 +41,8 @@ public class AddToCart {
         Assert.assertEquals(actualResult.contains(expecetedResult),true);
 
     }
+//    @After()
+//    public void closeBrowser() {
+//        driver.quit();
+//    }
 }

@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.messages.types.Hook;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class AddToWishlist {
     AddToWishlistPage addToWishlistPage;
@@ -24,7 +25,9 @@ public class AddToWishlist {
         addToWishlistPage.click_addtoWishlist();
 
        // Hooks.driver.findElement(By.xpath("//*[text()='Add to wishlist']")).click();
-        Thread.sleep(3000);
+       // Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
+
         Hooks.driver.navigate().to("https://demo.nopcommerce.com/wishlist");
 
 
@@ -32,7 +35,9 @@ public class AddToWishlist {
     @Then("user get products added to wishlist")
     public void user_get_products_added_to_wishlist() throws InterruptedException {
 
-        Thread.sleep(2000);
+        //Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
+
         String expecetedResult ="Apple MacBook Pro 13-inch";
         String actualResult =Hooks.driver.findElement(By.className("product-name")).getText();
         System.out.println(Hooks.driver.findElement(By.className("product-name")).getText());

@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.messages.types.Hook;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class CompareProduct {
     CompareProductPage compareProductPage;
@@ -26,7 +27,7 @@ public class CompareProduct {
         compareProductPage.click_addtocompare();
 
         //Hooks.driver.findElement(By.xpath("//*[text()='Add to compare list']")).click();
-        Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
 
 
     }
@@ -37,7 +38,7 @@ public class CompareProduct {
         compareProductPage.click_addtocompare();
 
        // Hooks.driver.findElement(By.xpath("//*[text()='Compare products list']")).click();
-        Thread.sleep(2000);
+        BrowserUtils.waitFor(2);
         //  Assert.assertEquals(driver.getCurrentUrl(),"https://garnell-fe.vercel.app/");
         String expecetedResult ="Lenovo Thinkpad X1 Carbon Laptop";
         String actualResult =Hooks.driver.findElement(By.className("product-name")).getText();

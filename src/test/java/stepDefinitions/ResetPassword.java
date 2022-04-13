@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class ResetPassword {
      ResetPasswordPage resetPasswordPage;
@@ -36,7 +37,7 @@ public class ResetPassword {
     public void user_getAlert() throws InterruptedException {
 
         String expecetedResult = "Email with instructions has been sent to you.";
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         String actualResult =Hooks.driver.findElement(By.className("content")).getText();
         System.out.println(actualResult);
          Assert.assertEquals(actualResult.contains(expecetedResult),true);

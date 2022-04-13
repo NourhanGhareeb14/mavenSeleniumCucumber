@@ -10,6 +10,7 @@ import io.cucumber.messages.types.Hook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class CreateOrder {
     CreateOrderPage createOrderPage;
@@ -33,11 +34,11 @@ public class CreateOrder {
         Hooks.driver.navigate().to("https://demo.nopcommerce.com/apple-macbook-pro-13-inch");
          //Hooks.driver.findElement(By.xpath("//*[text()='Add to cart']")).click();
         addToCartPage.click_addtocart();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         Hooks.driver.navigate().to("https://demo.nopcommerce.com/cart");
 
         Hooks.driver.findElement(By.id("termsofservice")).click();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
 
     }
     @Then("user press on checkout and complete order")
@@ -45,25 +46,25 @@ public class CreateOrder {
          createOrderPage=new CreateOrderPage(Hooks.driver);
       //  Hooks.driver.findElement(By.id("checkout")).click();
         createOrderPage.click_checkout();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         Assert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/onepagecheckout#opc-billing");
 
          //Hooks.driver.findElement(By.name("save")).click();
         createOrderPage.click_save();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         Assert.assertEquals(Hooks.driver.getCurrentUrl(),"https://demo.nopcommerce.com/onepagecheckout#opc-shipping_method");
         // Hooks.driver.findElement(By.id("shipping-method-buttons-container")).click();
         createOrderPage.click_continue1();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
         //Hooks.driver.findElement(By.id("payment-method-buttons-container")).click();
         createOrderPage.click_continue2();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
        // Hooks.driver.findElement(By.id("payment-info-buttons-container")).click();
         createOrderPage.click_continue3();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
        // Hooks.driver.findElement(By.id("confirm-order-buttons-container")).click();
         createOrderPage.click_continue4();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
 
     }
 }

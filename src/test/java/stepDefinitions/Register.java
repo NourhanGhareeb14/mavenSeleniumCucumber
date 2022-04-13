@@ -7,6 +7,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 public class Register {
     RegisterPage registerPage;
@@ -21,18 +22,18 @@ public class Register {
        // Hooks.driver.findElement(By.id("gender-female")).click();
         registerPage.click_gender();
         //Hooks.driver.findElement(By.id("FirstName")).sendKeys("Nourhan");
-        registerPage.enter_firstName("nourhan");
+        registerPage.enter_firstName("nayra");
        // Hooks.driver.findElement(By.id("LastName")).sendKeys("Ghareeb");
         registerPage.enter_lastName("ghareeeb");
        // Hooks.driver.findElement(By.id("Email")).sendKeys("n.gharee999b@qpix.io");
-        registerPage.enter_email("nour@qqq.io");
+        registerPage.enter_email("nghareeebmuhammed@qpix.io");
         //Hooks.driver.findElement(By.id("Password")).sendKeys("12345678");
         registerPage.enter_password("12345678");
        // Hooks.driver.findElement(By.id("ConfirmPassword")).sendKeys("12345678");
         registerPage.confirm_password("12345678");
        // Hooks.driver.findElement(By.id("register-button")).click();
         registerPage.click_register();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(2);
      }
     @Then("user create new account")
     public void user_create_new_account() throws InterruptedException {

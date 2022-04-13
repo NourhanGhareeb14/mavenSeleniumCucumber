@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Hooks {
     static   WebDriver driver;
-
     @Before
-    public static void user_open_chrome_browser()
+    public
+    static void user_open_chrome_browser()
     {
 
         WebDriverManager.chromedriver().setup();
@@ -20,7 +20,6 @@ public class Hooks {
         driver.manage().window().maximize();
         driver.navigate().to("https://demo.nopcommerce.com/");
     }
-
     @After
     public static void quitdriver() throws InterruptedException {
 

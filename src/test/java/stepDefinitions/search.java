@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chromium.ChromiumDriver;
 import org.testng.Assert;
+import utilities.BrowserUtils;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class search {
         searchProductPage.enter_productname("book");
         //Hooks.driver.findElement(By.cssSelector("button[class=\"button-1 search-box-button\"]")).click();
         searchProductPage.clickOnsearch();
-        Thread.sleep(3000);
+        BrowserUtils.waitFor(3);
 
     }
 

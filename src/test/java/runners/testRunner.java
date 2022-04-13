@@ -6,9 +6,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-
-@CucumberOptions(
-features = "src/main/resources/features",
+ @CucumberOptions(
+features = "src\\main\\resources\\features",
         glue = "stepDefinitions",
         monochrome = true,
         plugin = {"pretty",
@@ -21,10 +20,6 @@ features = "src/main/resources/features",
 
 
 )
-
-
-
-
 
 public class testRunner extends AbstractTestNGCucumberTests {
 }
